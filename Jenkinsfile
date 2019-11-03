@@ -79,7 +79,7 @@ podTemplate(cloud: "kubernetes", containers: [
                         set +x
                         echo '$DOCKER_CONFIG_FILE' > config.json
                         cp config.json /kaniko/.docker/config.json
-                        /kaniko/executor --dockerfile=$WORKSPACE/Dockerfile --context=$WORKSPACE  --destination=bicatana/k8s:java --skip-tls-verify
+                        /kaniko/executor --dockerfile=$WORKSPACE/Dockerfile --context=$WORKSPACE  --destination=bicatana/demojava:$BUILD_NUMBER --skip-tls-verify
                         """                  
                     }
                     catch (exc) {
