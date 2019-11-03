@@ -3,7 +3,7 @@
 podTemplate(cloud: "kubernetes", containers: [
     containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine', ttyEnabled: true, alwaysPullImage: true),
     containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat', alwaysPullImage: true),
-    containerTemplate(name: 'sonar', image: 'sonarqube:latest', ttyEnabled: true, command: 'cat', alwaysPullImage: true),
+    // containerTemplate(name: 'sonar', image: 'sonarqube:latest', ttyEnabled: true, command: 'cat', alwaysPullImage: true),
     containerTemplate(name: 'kaniko', image: 'gcr.io/kaniko-project/executor:debug', ttyEnabled: true, command: '/busybox/cat', alwaysPullImage: true)
 ]) {
     node(POD_LABEL) {
@@ -41,17 +41,17 @@ podTemplate(cloud: "kubernetes", containers: [
                 }
             }
             //Check Package with SonarQube
-            stage('SonarQube Check') {
-                container('sonar') {
-                    try {
-                        sh "mvn clean verify sonar:sonar"
-                    }
-                    catch (exc) {
-                        println "Failed the Security Check - ${currentBuild.fullDisplayName}"
-                        throw(exc)
-                    }
-                }
-            }
+            // stage('SonarQube Check') {
+            //     container('sonar') {
+            //         try {
+            //             sh "mvn clean verify sonar:sonar"
+            //         }
+            //         catch (exc) {
+            //             println "Failed the Security Check - ${currentBuild.fullDisplayName}"
+            //             throw(exc)
+            //         }
+            //     }
+            // }
             //Run Maven Build Stage
             stage('Build Package') {
                 container('terraform') {
