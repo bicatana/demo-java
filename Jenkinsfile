@@ -44,7 +44,7 @@ podTemplate(cloud: "kubernetes", containers: [
             stage('SonarQube Check') {
                 container('sonar') {
                     try {
-                        sh "mvn sonar:sonar"
+                        sh "mvn clean verify sonar:sonar"
                     }
                     catch (exc) {
                         println "Failed the Security Check - ${currentBuild.fullDisplayName}"
