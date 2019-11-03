@@ -13,7 +13,7 @@ COPY pkg/demo.war /usr/local/tomcat/webapps/demo.war
 RUN mkdir /data
 ADD exporter.jar /data/exporter.jar
 ADD jmx/tomcat.yml /data/tomcat.yaml
-RUN java -javaagent:/data/exporter.jar=8088:/data/tomcat.yaml -jar $TOMCAT_HOME/start.jar
+RUN java -javaagent:/data/exporter.jar=8088:/data/tomcat.yaml
 
 EXPOSE 8080
 EXPOSE 8088
