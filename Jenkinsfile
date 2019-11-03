@@ -68,6 +68,22 @@ podTemplate(cloud: "kubernetes", containers: [
                     }
                 }
             }
+            stage('Build Exporter for Monitoring') {
+                container('maven') {
+                    try {
+                        sh """
+                            git clone https://github.com/prometheus/jmx_exporter.git
+                            cd jmx_exporter
+                            mvn package -Djar.finalName=exporter
+                            ls -la
+                        """
+                    }
+                    catch (exc) {
+                        println "Package Build Step Failed - ${currentBuild.fullDisplayName}"
+                        throw(exc)
+                    }
+                }
+            }
             //Package up and ship via Kaniko
             stage('Kaniko - Build & Ship') {
                 container('kaniko') {
