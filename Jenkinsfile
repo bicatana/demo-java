@@ -54,7 +54,7 @@ podTemplate(cloud: "kubernetes", containers: [
             // }
             //Run Maven Build Stage
             stage('Build Package') {
-                container('terraform') {
+                container('maven') {
                     try {
                         sh """
                             mvn -B clean package
