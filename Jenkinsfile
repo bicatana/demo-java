@@ -72,7 +72,7 @@ podTemplate(cloud: "kubernetes", containers: [
                 container('maven') {
                     try {
                         sh """
-                            wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar
+                            wget http://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.12.0/jmx_prometheus_javaagent-0.12.0.jar
                             mv jmx_prometheus_javaagent-0.12.0.jar exporter.jar
                             ls -la
                         """
