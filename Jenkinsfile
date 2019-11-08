@@ -10,7 +10,7 @@ podTemplate(cloud: "kubernetes", containers: [
         //Vault Configuration
         def configuration = [vaultUrl: 'http://10.103.252.118:8200',
                             vaultCredentialId: 'vault-token', engineVersion: 1]
-        //Define Required Secrets and Env Variables
+        //Define Required Secret and Env Variable
         def secrets = [
             [path: 'kv/docker', secretValues: [
                 [envVar: 'DOCKER_CONFIG_FILE', vaultKey: 'config']]]
