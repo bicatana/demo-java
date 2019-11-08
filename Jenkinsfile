@@ -2,6 +2,7 @@
 
 //Set Pod Templates for the Java build
 podTemplate(cloud: "kubernetes", containers: [
+    //Use Alpine where possible
     containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine', ttyEnabled: true, alwaysPullImage: true),
     containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat', alwaysPullImage: true),
     containerTemplate(name: 'kaniko', image: 'gcr.io/kaniko-project/executor:debug', ttyEnabled: true, command: '/busybox/cat', alwaysPullImage: true)
