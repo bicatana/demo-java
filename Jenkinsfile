@@ -1,6 +1,6 @@
 #!groovy
 
-//Set Pod Templates for CI build
+//Set Pod Templates for the Java build
 podTemplate(cloud: "kubernetes", containers: [
     containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:alpine', ttyEnabled: true, alwaysPullImage: true),
     containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat', alwaysPullImage: true),
