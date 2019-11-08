@@ -39,18 +39,6 @@ podTemplate(cloud: "kubernetes", containers: [
                     }
                 }
             }
-            //Check Package with SonarQube
-            // stage('SonarQube Check') {
-            //     container('sonar') {
-            //         try {
-            //             sh "mvn clean verify sonar:sonar"
-            //         }
-            //         catch (exc) {
-            //             println "Failed the Security Check - ${currentBuild.fullDisplayName}"
-            //             throw(exc)
-            //         }
-            //     }
-            // }
             //Run Maven Build Stage
             stage('Build Package') {
                 container('maven') {
