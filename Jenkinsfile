@@ -56,6 +56,7 @@ podTemplate(cloud: "kubernetes", containers: [
                     }
                 }
             }
+            //Add JMX Exporter for Prometheus
             stage('Build Exporter for Monitoring') {
                 container('maven') {
                     try {
