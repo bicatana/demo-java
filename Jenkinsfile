@@ -26,7 +26,6 @@ podTemplate(cloud: "kubernetes", containers: [
                 catch (exc) {
                     println "Failed the Git Checkout - ${currentBuild.fullDisplayName}"
                 }
-
             }
             //Ensure that the Workspace is ready for the pipeline
             stage('Check Workspace') {
