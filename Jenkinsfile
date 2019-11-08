@@ -1,5 +1,5 @@
 #!groovy
-
+//
 //Set Pod Templates for the Java build
 podTemplate(cloud: "kubernetes", containers: [
     //Use Alpine where possible
